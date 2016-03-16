@@ -17,19 +17,16 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 - (IBAction)twitterize:(UIButton *)sender {
     NSString *inputText = self.inputTextArea.text;
     NSUInteger length = inputText.length;
-    NSMutableString *twitterText = [NSMutableString string];
+    NSString *twitterText = [NSMutableString stringWithString:(inputText)];
     for (int i = 0; i < length; i++) {
-        
+        if ([lcTwitterText characterAtIndex:i] == @"a" || @"e" || @"i" || "o" || "u" || "y") {
+            <#statements#>
+        }
     }
 }
 
