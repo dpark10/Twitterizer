@@ -22,10 +22,13 @@
 - (IBAction)twitterize:(UIButton *)sender {
     NSString *inputText = self.inputTextArea.text;
     NSUInteger length = inputText.length;
-    NSString *twitterText = [NSMutableString stringWithString:(inputText)];
+    NSMutableString *twitterText = [NSMutableString stringWithString:(inputText)];
+    [twitterText setString:[twitterText lowercaseString]];
+    NSLog(@"%@", twitterText);
+    
     for (int i = 0; i < length; i++) {
-        if ([lcTwitterText characterAtIndex:i] == @"a" || @"e" || @"i" || "o" || "u" || "y") {
-            <#statements#>
+        if ([twitterText characterAtIndex:i] == @"a" || @"e" || @"i" || @"o" || @"u" || @"y") {
+            NSLog(@"test");
         }
     }
 }
