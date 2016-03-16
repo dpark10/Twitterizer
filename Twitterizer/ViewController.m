@@ -28,7 +28,6 @@
     
     for (int i = 0; i < length; i++) {
         if ([twitterText characterAtIndex:i] == @"a" || @"e" || @"i" || @"o" || @"u" || @"y") {
-            
         }
     }
 }
