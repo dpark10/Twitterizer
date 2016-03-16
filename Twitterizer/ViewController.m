@@ -9,6 +9,7 @@
 #import "ViewController.h"
 
 @interface ViewController ()
+@property (weak, nonatomic) IBOutlet UITextView *inputTextArea;
 
 @end
 
@@ -22,6 +23,14 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+- (IBAction)twitterize:(UIButton *)sender {
+    NSString *inputText = self.inputTextArea.text;
+    NSUInteger length = inputText.length;
+    NSMutableString *twitterText = [NSMutableString string];
+    for (int i = 0; i < length; i++) {
+        
+    }
 }
 
 @end
