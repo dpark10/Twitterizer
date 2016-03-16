@@ -8,8 +8,9 @@
 
 #import "ViewController.h"
 
-@interface ViewController ()
+@interface ViewController () <UITextViewDelegate>
 @property (weak, nonatomic) IBOutlet UITextView *inputTextArea;
+@property (weak, nonatomic) IBOutlet UILabel *numberOfCharacters;
 
 @end
 
@@ -26,12 +27,15 @@
     [twitterText setString:[twitterText lowercaseString]];
     NSLog(@"%@", twitterText);
     
-    for (int i = 0; i < length; i++) {
-        if ([twitterText characterAtIndex:i] == @"a" || @"e" || @"i" || @"o" || @"u" || @"y") {
-            NSLog(@"%c");
-            
-        }
-    }
+    NSString *newString1 = [twitterText stringByReplacingOccurrencesOfString:@"a" withString:@""];
+    NSString *newString2 = [newString1 stringByReplacingOccurrencesOfString:@"e" withString:@""];
+    NSString *newString3 = [newString2 stringByReplacingOccurrencesOfString:@"i" withString:@""];
+    NSString *newString4 = [newString3 stringByReplacingOccurrencesOfString:@"o" withString:@""];
+    NSString *newString5 = [newString4 stringByReplacingOccurrencesOfString:@"u" withString:@""];
+    NSString *newString6 = [newString5 stringByReplacingOccurrencesOfString:@"y" withString:@""];
+    
+    self.inputTextArea.text = newString6;
+
 }
 
 @end
