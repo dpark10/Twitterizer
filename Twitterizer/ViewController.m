@@ -22,10 +22,9 @@
 
 - (IBAction)twitterize:(UIButton *)sender {
     NSString *inputText = self.inputTextArea.text;
-    NSUInteger length = inputText.length;
-    NSMutableString *twitterText = [NSMutableString stringWithString:(inputText)];
-    [twitterText setString:[twitterText lowercaseString]];
+    NSMutableString *twitterText = [NSMutableString stringWithString:self.inputTextArea.text];
     NSLog(@"%@", twitterText);
+
     NSString *newString1 = [twitterText stringByReplacingOccurrencesOfString:@"a" withString:@""];
     NSString *newString2 = [newString1 stringByReplacingOccurrencesOfString:@"e" withString:@""];
     NSString *newString3 = [newString2 stringByReplacingOccurrencesOfString:@"i" withString:@""];
@@ -33,12 +32,12 @@
     NSString *newString5 = [newString4 stringByReplacingOccurrencesOfString:@"u" withString:@""];
     NSString *newString6 = [newString5 stringByReplacingOccurrencesOfString:@"y" withString:@""];
     self.inputTextArea.text = newString6;
-    self.numberOfCharacters.text = [NSString stringWithFormat:@"%d", (int)length];
+    self.numberOfCharacters.text = [NSString stringWithFormat:@"%i", (int)newString6.length];
 }
 
 -(void)textViewDidChange:(UILabel *)numberOfCharacters {
-    int len = self.inputTextArea.text.length;
-    self.numberOfCharacters.text=[NSString stringWithFormat:@"%i",len];
+    NSUInteger len = self.inputTextArea.text.length;
+    self.numberOfCharacters.text=[NSString stringWithFormat:@"%lu",len];
 }
 
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
@@ -50,11 +49,13 @@
             return YES;
         }
     }
-    else if([[textView text] length] > 139)
+    else if([textView.text length] > 139)
     {
         return NO;
     }
     return YES;
 }
+
+
 
 @end
