@@ -21,9 +21,7 @@
 }
 
 - (IBAction)twitterize:(UIButton *)sender {
-    NSString *inputText = self.inputTextArea.text;
     NSMutableString *twitterText = [NSMutableString stringWithString:self.inputTextArea.text];
-    NSLog(@"%@", twitterText);
 
     NSString *newString1 = [twitterText stringByReplacingOccurrencesOfString:@"a" withString:@""];
     NSString *newString2 = [newString1 stringByReplacingOccurrencesOfString:@"e" withString:@""];
@@ -31,13 +29,19 @@
     NSString *newString4 = [newString3 stringByReplacingOccurrencesOfString:@"o" withString:@""];
     NSString *newString5 = [newString4 stringByReplacingOccurrencesOfString:@"u" withString:@""];
     NSString *newString6 = [newString5 stringByReplacingOccurrencesOfString:@"y" withString:@""];
-    self.inputTextArea.text = newString6;
-    self.numberOfCharacters.text = [NSString stringWithFormat:@"%i", (int)newString6.length];
+    NSString *newString7 = [newString6 stringByReplacingOccurrencesOfString:@"A" withString:@""];
+    NSString *newString8 = [newString7 stringByReplacingOccurrencesOfString:@"E" withString:@""];
+    NSString *newString9 = [newString8 stringByReplacingOccurrencesOfString:@"I" withString:@""];
+    NSString *newStringA = [newString9 stringByReplacingOccurrencesOfString:@"O" withString:@""];
+    NSString *newStringB = [newStringA stringByReplacingOccurrencesOfString:@"U" withString:@""];
+    NSString *newStringC = [newStringB stringByReplacingOccurrencesOfString:@"Y" withString:@""];
+    self.inputTextArea.text = newStringC;
+    self.numberOfCharacters.text = [NSString stringWithFormat:@"Word count: %i", (int)newStringC.length];
 }
 
 -(void)textViewDidChange:(UILabel *)numberOfCharacters {
     NSUInteger len = self.inputTextArea.text.length;
-    self.numberOfCharacters.text=[NSString stringWithFormat:@"%lu",len];
+    self.numberOfCharacters.text = [NSString stringWithFormat:@"Word count: %lu", len];
 }
 
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
@@ -56,6 +60,9 @@
     return YES;
 }
 
+- (IBAction)onHashtagButtonTapped:(UIButton *)sender {
+    
+}
 
 
 @end
